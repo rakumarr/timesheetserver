@@ -1,6 +1,6 @@
 package com.ms2003.timesheet.business.service;
 
-import com.ms2003.timesheet.business.domain.RoleDTO;
+import com.ms2003.timesheet.business.dto.RoleDTO;
 import com.ms2003.timesheet.data.entity.Role;
 import com.ms2003.timesheet.data.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

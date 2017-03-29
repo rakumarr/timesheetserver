@@ -1,6 +1,6 @@
 package com.ms2003.timesheet.business.service;
 
-import com.ms2003.timesheet.business.domain.EmployeeInfo;
+import com.ms2003.timesheet.business.dto.EmployeeDTO;
 import com.ms2003.timesheet.business.exception.RoleNotFoundException;
 import com.ms2003.timesheet.data.entity.Employee;
 import com.ms2003.timesheet.data.entity.Role;
@@ -27,10 +27,10 @@ public class EmployeeService {
         this.roleRepository = roleRepository;
     }
 
-    public List<EmployeeInfo> getEmployeeInformation(){
-        List<EmployeeInfo> list = new ArrayList();
+    public List<EmployeeDTO> getEmployeeInformation(){
+        List<EmployeeDTO> list = new ArrayList();
         this.employeeRepository.findAll().forEach(employee->{
-            EmployeeInfo e = new EmployeeInfo();
+            EmployeeDTO e = new EmployeeDTO();
             e.setFirstName(employee.getFirstName());
             e.setLastName(employee.getLastName());
             e.setGender(employee.getGender());
@@ -40,7 +40,7 @@ public class EmployeeService {
         return list;
     }
 
-    public void addEmployee(EmployeeInfo newEmployee) {
+    public void addEmployee(EmployeeDTO newEmployee) {
         Role role = roleRepository.findByRoleName(newEmployee.getRole());
         if(role == null){
             throw new RoleNotFoundException("Role does not exist: "+newEmployee.getRole());

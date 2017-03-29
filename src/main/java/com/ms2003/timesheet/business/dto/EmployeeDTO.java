@@ -1,8 +1,7 @@
-package com.ms2003.timesheet.business.domain;
+package com.ms2003.timesheet.business.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -10,7 +9,7 @@ import javax.validation.constraints.Size;
 /**
  * Created by hr on 28/3/17.
  */
-public class EmployeeInfo {
+public class EmployeeDTO {
 
     @Size(min=2, max=30)
     @NotNull(message = "First name is compulsory")

@@ -1,6 +1,6 @@
 package com.ms2003.timesheet.web.service;
 
-import com.ms2003.timesheet.business.domain.RoleDTO;
+import com.ms2003.timesheet.business.dto.RoleDTO;
 import com.ms2003.timesheet.business.service.RoleService;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;

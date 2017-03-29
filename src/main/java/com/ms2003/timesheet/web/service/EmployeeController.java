@@ -1,6 +1,6 @@
 package com.ms2003.timesheet.web.service;
 
-import com.ms2003.timesheet.business.domain.EmployeeInfo;
+import com.ms2003.timesheet.business.dto.EmployeeDTO;
 import com.ms2003.timesheet.business.service.EmployeeService;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;
@@ -28,14 +28,14 @@ public class EmployeeController {
 
     @RequestMapping(value="/all", method = RequestMethod.GET)
     @ApiMethod(description = "Get all Employee from Database")
-    public List<EmployeeInfo> getAll(){
+    public List<EmployeeDTO> getAll(){
         return employeeService.getEmployeeInformation();
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ApiMethod(description = "Create a Employee and save it to the Database")
-    public void createEmployee(@ApiBodyObject @RequestBody @Validated EmployeeInfo employeeInfo){
+    public void createEmployee(@ApiBodyObject @RequestBody @Validated EmployeeDTO employeeInfo){
         employeeService.addEmployee(employeeInfo);
     }
 

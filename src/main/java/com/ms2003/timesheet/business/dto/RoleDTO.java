@@ -1,4 +1,4 @@
-package com.ms2003.timesheet.business.domain;
+package com.ms2003.timesheet.business.dto;
 
 /**
  * Created by hr on 29/3/17.
