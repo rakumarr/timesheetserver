@@ -1,13 +1,14 @@
 package com.ms2003.timesheet.data.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by hr on 28/3/17.
  */
 @Entity
 @Table(name="EMPLOYEE")
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @Column(name="EMP_ID")
@@ -17,6 +18,28 @@ public class Employee {
     private String firstName;
     @Column(name="LASTNAME")
     private String lastName;
+    @Column(name="GENDER")
+    private String gender;
+
+    @ManyToOne
+    @JoinColumn(name = "roleName")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public long getId() {
         return id;

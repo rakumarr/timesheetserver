@@ -7,11 +7,9 @@ import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiMethod;
 import org.jsondoc.core.pojo.ApiStage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,8 +33,9 @@ public class EmployeeController {
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiMethod(description = "Create a Employee and save it to the Database")
-    public void createEmployee(@ApiBodyObject @RequestBody EmployeeInfo employeeInfo){
+    public void createEmployee(@ApiBodyObject @RequestBody @Validated EmployeeInfo employeeInfo){
         employeeService.addEmployee(employeeInfo);
     }
 
