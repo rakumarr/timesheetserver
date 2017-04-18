@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>timesheetserver</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Time Sheet</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -70,6 +70,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
