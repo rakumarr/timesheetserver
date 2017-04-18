@@ -1,6 +1,7 @@
 package com.ms2003.timesheet.business.service;
 
 import com.ms2003.timesheet.business.dto.EmployeeDTO;
+import com.ms2003.timesheet.business.exception.EmployeeNotFoundException;
 import com.ms2003.timesheet.business.exception.RoleNotFoundException;
 import com.ms2003.timesheet.data.entity.Employee;
 import com.ms2003.timesheet.data.entity.Role;
@@ -34,6 +35,7 @@ public class EmployeeService {
             e.setFirstName(employee.getFirstName());
             e.setLastName(employee.getLastName());
             e.setGender(employee.getGender());
+            e.setEmail(employee.getEmail());
             e.setRole(employee.getRole().getRoleName());
             list.add(e);
         });
@@ -49,7 +51,32 @@ public class EmployeeService {
         e.setFirstName(newEmployee.getFirstName());
         e.setLastName(newEmployee.getLastName());
         e.setGender(newEmployee.getGender());
+        e.setEmail(newEmployee.getEmail());
         e.setRole(role);
+        this.employeeRepository.save(e);
+    }
+
+    public void delEmployee(EmployeeDTO employeeDTO) {
+        Employee e = this.employeeRepository.findByEmail(employeeDTO.getEmail());
+        if(e == null){
+            throw new EmployeeNotFoundException("Employee does not exist: "+employeeDTO.getEmail());
+        }
+        this.employeeRepository.delete(e);
+    }
+
+    public void editEmployee(EmployeeDTO employeeDTO) {
+        Employee e = this.employeeRepository.findByEmail(employeeDTO.getEmail());
+        if(e == null){
+            throw new EmployeeNotFoundException("Employee does not exist: "+employeeDTO.getEmail());
+        }
+        Role role = roleRepository.findByRoleName(employeeDTO.getRole());
+        if(role == null){
+            throw new RoleNotFoundException("Role does not exist: "+employeeDTO.getRole());
+        }
+        e.setRole(role);
+        e.setGender(employeeDTO.getGender());
+        e.setFirstName(employeeDTO.getFirstName());
+        e.setLastName(employeeDTO.getLastName());
         this.employeeRepository.save(e);
     }
 }

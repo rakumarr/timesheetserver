@@ -33,10 +33,23 @@ public class EmployeeController {
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @ApiMethod(description = "Create a Employee and save it to the Database")
     public void createEmployee(@ApiBodyObject @RequestBody @Validated EmployeeDTO employeeInfo){
         employeeService.addEmployee(employeeInfo);
     }
 
+    @RequestMapping(value="/delete", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ApiMethod(description = "Delete a Employee from the Database")
+    public void deleteEmployee(@RequestBody @Validated EmployeeDTO employeeInfo){
+        employeeService.delEmployee(employeeInfo);
+    }
+
+    @RequestMapping(value="/edit", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ApiMethod(description = "Edit a Employee and save it to the Database")
+    public void editEmployee(@RequestBody @Validated EmployeeDTO employeeInfo){
+        employeeService.editEmployee(employeeInfo);
+    }
 }

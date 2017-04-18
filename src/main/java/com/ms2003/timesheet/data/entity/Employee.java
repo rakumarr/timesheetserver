@@ -20,6 +20,8 @@ public class Employee implements Serializable {
     private String lastName;
     @Column(name="GENDER")
     private String gender;
+    @Column(name="EMAIL")
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "roleName")
@@ -55,6 +57,14 @@ public class Employee implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLastName() {

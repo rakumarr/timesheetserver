@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 
 /**
  * Created by hr on 28/3/17.
@@ -26,8 +27,22 @@ public class EmployeeDTO {
     @NotNull(message = "Gender is compulsory")
     private String gender;
 
+    @NotNull(message="Email Address is compulsory")
+    @NotBlank(message="Email Address is compulsory")
+    @Email(message = "Email Address is not a valid format")
+    private String email;
+
     @NotNull(message = "Role is compulsory")
     private String role;
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getRole() {
         return role;

@@ -1,2 +1,4 @@
 INSERT INTO ROLE_INFO (ROLE_NAME, ROLE_DESCRIPTION) VALUES ('Developer', 'Beginner level programmar');
-INSERT INTO EMPLOYEE (FIRSTNAME, LASTNAME, GENDER, ROLE_NAME) VALUES ('rajesh', 'kumar', 'male', 'Developer');
+INSERT INTO ROLE_INFO (ROLE_NAME, ROLE_DESCRIPTION) VALUES ('Tester', 'Tester Joiner Level');
+INSERT INTO ROLE_INFO (ROLE_NAME, ROLE_DESCRIPTION) VALUES ('Manager', 'Manager');
+INSERT INTO EMPLOYEE (FIRSTNAME, LASTNAME, GENDER, EMAIL, ROLE_NAME) VALUES ('rajesh', 'kumar', 'male', 'rajesh@gmail.com', 'Developer');
